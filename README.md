@@ -149,7 +149,7 @@ Para simular ataques de força bruta contra o serviço FTP, foi criada uma lista
 📜 Script em Python
 
 <br>
-
+```python
 # Script para gerar lista de senhas
 
 # Nome do arquivo de saída
@@ -207,6 +207,7 @@ with open(arquivo, "w") as f:
                 f.write(p.format(letra + senha + letra) + "\n")
 
 print(f"Lista gerada com sucesso em: {arquivo}")
+```python
 
 <br>
 
