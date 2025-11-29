@@ -92,6 +92,8 @@ nmap → ferramenta de mapeamento de rede
 
 192.168.15.0/24 → intervalo de endereços da rede (255.255.255.0 → .1 até .254)
 
+<br>
+
 📊 O que o comando faz Percorre todo o segmento de rede e retorna uma lista de hosts online.
 
 <br>
@@ -127,3 +129,9 @@ nmap -A -p- -T4 192.168.15.3
 -Executa scripts NSE padrão
 
 -Faz traceroute até o host
+
+<br>
+
+![nmaptarget](imagens/nmaptarget.jpg)
+
+<br>
