@@ -1,6 +1,8 @@
 📂 Case Study: FTP & SMB Brute Force in Windows
+<br>
 
 Case study: brute force detection and automated blocking in Windows IIS FTP environments.
+<br>
 
 Este estudo de caso investiga ataques de força bruta direcionados a serviços FTP hospedados em Windows Server com IIS. A partir da análise dos padrões de falhas de autenticação registrados nos logs do IIS FTP, propomos um mecanismo prático de defesa implementado por meio de scripts em PowerShell e automação do Windows Firewall, assim como o hardning nas configurações do ISS.
 
@@ -13,12 +15,13 @@ A solução:
 
 Os resultados demonstram que, mesmo sem ferramentas nativas como o fail2ban, ambientes Windows podem alcançar uma mitigação eficaz contra brute force através da observabilidade de configurações de segurança (hardening) ou utilização de scripts próprios.
 
+<br>
 🔑 Keywords / Palavras-chave
 
 Keywords: Information Security; Brute Force Attacks; FTP; IIS; Windows Server; PowerShell; Automation; Firewall; Case Study.
 
 Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; Windows Server; PowerShell; Automação; Firewall; Estudo de Caso.
-
+<br>
 
 🖥️ Ambiente Experimental / Experimental Environment
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
