@@ -234,3 +234,92 @@ print(f"Lista gerada com sucesso em: {arquivo}")
 
 O arquivo final password_list.txt contém uma lista extensa de senhas que imita padrões reais de usuários.
 
+<br>
+
+👤 Criação da User List / User List Creation
+<br>
+---
+<br>
+
+Além da lista de senhas, também foi necessário criar uma lista de nomes de usuários para simular tentativas de login em serviços FTP e SMB. Essa lista foi construída em Python e executada no Google Colab, garantindo flexibilidade e reprodutibilidade.
+
+<br>
+
+📜 Script em Python
+
+<br>
+
+```python
+# Script para gerar arquivos de nomes em ptbr
+
+# Lista de nomes comuns no Brasil
+nomes = [
+    "admin", "administrador", "administrator", "root", "adm", "htmaster", "convidado", "guest", 
+    "ana", "maria", "joao", "jose", "pedro", "paulo", "carlos", "lucas",
+    "gabriel", "rafael", "mateus", "miguel", "rodrigo", "fernando", "bruno",
+    "juliana", "camila", "patricia", "beatriz", "carla", "renata", "andre",
+    "felipe", "gustavo", "daniel", "thiago", "marcos", "claudia", "silvia"
+]
+
+# Nome do arquivo de saída
+arquivo = "userlist_ptbr.txt"
+
+# Gerar combinações
+with open(arquivo, "w") as f:
+    for nome in nomes:
+        # Nome puro
+        f.write(nome + "\n")
+    for i in range(len(nomes)):
+        for j in range(len(nomes)):
+            if i != j:
+                # Nomes compostos com diferentes separadores
+                f.write(f"{nomes[i]}.{nomes[j]}\n")
+
+print(f"Lista gerada com sucesso em: {arquivo}")
+```
+
+<br>
+
+📖 Explicação:
+
+<br>
+
+- Lista nomes → contém usuários comuns em ambientes brasileiros, incluindo nomes genéricos (admin, root, guest) e nomes pessoais (ana, joao, maria, etc.).
+
+- Arquivo de saída → userlist_ptbr.txt, onde todos os nomes são gravados.
+
+- Primeiro loop → grava cada nome puro em uma linha.
+
+- Segundo loop → gera combinações de nomes compostos com separador . (ex.: ana.maria, joao.pedro).
+
+- Resultado final → centenas de combinações de nomes, simulando cenários reais de usuários em sistemas corporativos e domésticos.
+
+<br>
+
+📊 Resultado:
+
+<br>
+
+- O arquivo userlist_ptbr.txt contém:
+
+- Usuários genéricos (admin, root, guest).
+
+- Nomes pessoais comuns no Brasil.
+
+- Combinações compostas (ana.maria, carlos.lucas, juliana.camila).
+
+<br>
+
+🚀 Importância no estudo:
+
+<br>
+
+- Realismo: simula nomes de usuários comuns em ambientes brasileiros.
+
+- Escopo ampliado: combinações compostas aumentam a superfície de ataque.
+
+- Integração prática: lista de usuários + lista de senhas → ataques de brute force mais completos.
+
+<br>
+
+
