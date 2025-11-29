@@ -16,20 +16,28 @@ A solução:
 Os resultados demonstram que, mesmo sem ferramentas nativas como o fail2ban, ambientes Windows podem alcançar uma mitigação eficaz contra brute force através da observabilidade de configurações de segurança (hardening) ou utilização de scripts próprios.
 
 <br>
+
 🔑 Keywords / Palavras-chave
+
+<br>
 
 Keywords: Information Security; Brute Force Attacks; FTP; IIS; Windows Server; PowerShell; Automation; Firewall; Case Study.
 
 Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; Windows Server; PowerShell; Automação; Firewall; Estudo de Caso.
+
 <br>
 
 ---
 
 <br>
+
 🖥️ Ambiente Experimental / Experimental Environment
 <br>
+
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
+
 <br>
+
 🔹 Servidor Alvo
 -SO: Windows Server 2012 R2
 -Função instalada: IIS FTP Server
