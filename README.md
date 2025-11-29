@@ -16,7 +16,9 @@ Para simular ataques de brute force em FTP, foram utilizadas máquinas virtuais 
 - **Servidor alvo (Windows Server 2012 R2 com IIS FTP)**
   - Sistema operacional: Windows Server 2012 R2
   - Função instalada: IIS FTP Server
-    ![Funções](imagens/servicos.jpg)
+
+![Funções](imagens/servicos.jpg)
+
   - Diretório de logs: `C:\inetpub\logs\LogFiles\FTPSVC2\`
   - Usuários configurados para autenticação via Active Directory
 
