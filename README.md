@@ -66,13 +66,11 @@ Configuração:
 -Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
 
 <br>
+
+<br>
+
+<br>
 ---
-<br>
-
-<br>
-
-<br>
-
 ⚙️ Metodologia / Methodology
 
 <br>
