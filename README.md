@@ -23,6 +23,9 @@ Keywords: Information Security; Brute Force Attacks; FTP; IIS; Windows Server; P
 Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; Windows Server; PowerShell; Automação; Firewall; Estudo de Caso.
 <br>
 
+---
+
+<br>
 🖥️ Ambiente Experimental / Experimental Environment
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
 
