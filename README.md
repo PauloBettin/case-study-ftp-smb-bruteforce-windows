@@ -512,8 +512,9 @@ O script desenvolvido implementa uma defesa básica contra ataques de brute forc
 ##👉 Em resumo, este script representa uma defesa simples, eficaz e de baixo custo contra ataques de força bruta, aproveitando logs e eventos já disponíveis no Windows para identificar tentativas repetidas de login e aplicar bloqueios temporários de forma automática.
 <br>
 
-
-![script](/Fail2BanWin.ps1)
+```powershell
+# Veja o script completo em:
+# [https://github.com/usuario/repositorio/blob/main/Fail2BanWin.ps1](https://github.com/PauloBettin/case-study-ftp-smb-bruteforce-windows/blob/main/Fail2BanWin.ps1)
 
 <br>
 
