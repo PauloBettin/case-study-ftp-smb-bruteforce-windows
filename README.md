@@ -27,8 +27,9 @@ Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; W
 
 <br>
 🖥️ Ambiente Experimental / Experimental Environment
+<br>
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
-
+<br>
 🔹 Servidor Alvo
 -SO: Windows Server 2012 R2
 -Função instalada: IIS FTP Server
@@ -50,7 +51,11 @@ Configuração:
 🔹 Máquina Cliente
 -SO: Windows 11 24h2
 -Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
+<br>
 
+---
+
+<br>
 ⚙️ Metodologia / Methodology
 
 🔍 Identificando o IP no Kali Linux
