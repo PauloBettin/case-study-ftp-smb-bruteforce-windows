@@ -64,11 +64,15 @@ Configuração:
 🔹 Máquina Cliente
 -SO: Windows 11 24h2
 -Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
+
 <br>
 
+<br>
 ---
+<br>
 
 <br>
+
 ⚙️ Metodologia / Methodology
 
 🔍 Identificando o IP no Kali Linux
