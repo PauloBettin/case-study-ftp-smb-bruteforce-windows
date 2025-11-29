@@ -322,4 +322,122 @@ print(f"Lista gerada com sucesso em: {arquivo}")
 
 <br>
 
+⚔️ Ataque de Força Bruta com Medusa / Brute Force Attack with Medusa
+<br>
+---
+<br>
+
+Após a criação das listas de usuários (userlist_ptbr.txt) e senhas (password_list.txt), foi realizado o ataque de força bruta contra o serviço FTP do host alvo (192.168.15.3) utilizando a ferramenta Medusa.
+
+<br>
+
+📜 Comando utilizado: medusa -h 192.168.15.3 -U userlist_ptbr.txt -P password_list.txt -M ftp | grep SUCCESS
+
+<br>
+
+📖 Explicação dos parâmetros:
+
+- medusa → ferramenta de brute force rápida e modular, usada para testar credenciais em diversos serviços.
+
+-h 192.168.15.3 → define o host alvo (IP do servidor FTP).
+
+-U userlist_ptbr.txt → arquivo contendo a lista de usuários gerada em Python.
+
+-P password_list.txt → arquivo contendo a lista de senhas gerada em Python.
+
+-M ftp → especifica o módulo FTP, ou seja, o serviço contra o qual o ataque será realizado.
+
+| grep SUCCESS → filtra a saída do Medusa, mostrando apenas as tentativas que tiveram sucesso (credenciais válidas).
+
+<br>
+
+📊 O que o comando faz:
+
+<br>
+
+- O Medusa percorre todas as combinações possíveis entre os usuários e senhas fornecidos.
+
+- Para cada tentativa, ele tenta autenticar no serviço FTP do host alvo.
+
+- Se alguma combinação for válida, a saída mostrará a linha com a palavra SUCCESS.
+
+- O uso do grep SUCCESS garante que apenas os resultados positivos apareçam, facilitando a identificação das credenciais corretas.
+
+<br>
+
+📌 Saida do ataque:
+
+<br>
+
+![medusaftp](imagens/medusaftp.jpg)
+
+<br>
+
+⚔️ Ataque de Força Bruta com Medusa (SMBNT) / Brute Force Attack with Medusa (SMBNT)
+<br>
+---
+<br>
+
+📜 Comando utilizado: medusa -h 192.168.15.3 -U userlist_ptbr.txt -P password_list.txt -M smbnt | grep SUCCESS
+
+<br>
+
+📖 Explicação dos parâmetros:
+
+- medusa → ferramenta de brute force modular.
+
+-h 192.168.15.3 → IP do host alvo (Windows Server).
+
+-U userlist_ptbr.txt → lista de usuários criada em Python.
+
+-P password_list.txt → lista de senhas criada em Python.
+
+-M smbnt → módulo SMB/NTLM, usado para autenticação em compartilhamentos de arquivos Windows (SMB).
+
+<br>
+
+Diferente do -M ftp, aqui o ataque é direcionado ao serviço de compartilhamento de arquivos do Windows.
+Esse módulo tenta autenticar contra o Server Message Block (SMB), protocolo usado para acesso a pastas compartilhadas, impressoras e outros recursos de rede.
+
+<br>
+
+| grep SUCCESS → filtra a saída para mostrar apenas credenciais válidas encontradas.
+
+<br>
+
+📊 O que o comando faz:
+
+- Percorre todas as combinações de usuários e senhas.
+
+- Tenta autenticar no serviço SMB do host alvo.
+
+- Se alguma combinação for válida, aparece a linha com SUCCESS.
+
+- O filtro grep SUCCESS mostra apenas os resultados positivos.
+
+<br>
+
+📌 Saida do Comando:
+
+<br>
+
+![medusasmb](imagens/medusasmb.jpg)
+
+<br>
+
+🚀 Importância no estudo:
+
+<br>
+
+- Mostra que o ataque não se limita ao FTP: SMB também é vulnerável a brute force.
+
+- Reforça a necessidade de monitorar múltiplos serviços (FTP, SMB, RDP) em ambientes Windows.
+
+- Justifica o uso do script de defesa para bloquear IPs após tentativas repetidas, protegendo não só o FTP mas também outros serviços críticos.
+
+## - A visualização das mesmas senhas nos 2x protocolos diferentes evidencia o uso do Active Directory como database para as contas de usários.
+
+
+
+
 
