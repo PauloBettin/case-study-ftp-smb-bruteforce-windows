@@ -84,7 +84,9 @@ Para identificar os possíveis hosts ativos com o comando: nmap -sn 192.168.15.0
 
 <br>
 
-📖 Explicação dos parâmetros
+📖 Explicação dos parâmetros:
+
+<br>
 
 nmap → ferramenta de mapeamento de rede
 
@@ -98,11 +100,8 @@ nmap → ferramenta de mapeamento de rede
 
 <br>
 
-🔍 Escaneando o host alvo
-Após identificar o host 192.168.15.3, realizamos um scan completo:
-
-bash
-nmap -A -p- -T4 192.168.15.3
+🔍 Escaneando o host alvo:
+Após identificar o host 192.168.15.3, realizamos um scan completo com o comando: nmap -A -p- -T4 192.168.15.3
 
 <br>
 
@@ -118,7 +117,9 @@ nmap -A -p- -T4 192.168.15.3
 
 <br>
 
-📊 O que o comando faz
+📊 O que o comando faz:
+
+<br>
 
 -Verifica todas as portas abertas
 
