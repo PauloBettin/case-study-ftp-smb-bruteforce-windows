@@ -67,12 +67,9 @@ Configuração:
 
 <br>
 
-<br>
-
+⚙️Metodologia / Methodology
 <br>
 ---
-⚙️ Metodologia / Methodology
-
 <br>
 
 🔍 Identificando o IP no Kali Linux
