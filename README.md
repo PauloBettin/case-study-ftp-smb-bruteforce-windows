@@ -677,7 +677,9 @@ C:\Fail2BanWin
 Clique em Install service.
 
 <br>
+
 ▶️ 4. Gerenciar o serviço
+
 <br>
 
 Para iniciar:
@@ -704,4 +706,18 @@ nssm remove Fail2BanWin confirm
 - Ele será iniciado automaticamente junto com o sistema.
 
 - Logs e bloqueios continuarão funcionando sem precisar abrir manualmente o PowerShell.
+
+<br>
+
+📚 Bibliografia / Bibliography
+
+<br>
+---
+<br>
+
+WiredPulse. Invoke-Fail2Ban: PowerShell version of Fail2Ban. GitHub. Disponível em: https://github.com/wiredpulse/Invoke-Fail2Ban. Acesso em: nov. 2025.
+
+Alkane Solutions. Use PowerShell to Block IP Addresses (Fail2ban). Alkane Blog, 29 abr. 2023. Disponível em: https://www.alkanesolutions.co.uk/2023/04/29/use-powershell-to-block-ip-addresses-fail2ban/. Acesso em: nov. 2025.
+
+WatchPoint Data. Brute Force Attack Detection and Blacklisting with PowerShell. Spiceworks Community, 13 fev. 2017. Disponível em: https://community.spiceworks.com/t/brute-force-attack-detection-and-blacklisting-with-powershell/1011533. Acesso em: nov. 2025.
 
