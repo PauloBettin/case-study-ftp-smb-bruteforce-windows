@@ -513,7 +513,7 @@ O script desenvolvido implementa uma defesa básica contra ataques de brute forc
 <br>
 
 
-![medusaftp](/Fail2BanWin.ps1)
+![script](/Fail2BanWin.ps1)
 
 <br>
 
