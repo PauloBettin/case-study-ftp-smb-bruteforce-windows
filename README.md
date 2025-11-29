@@ -677,15 +677,19 @@ C:\Fail2BanWin
 Clique em Install service.
 
 <br>
-▶️ 4. Iniciar e gerenciar o serviço
+▶️ 4. Gerenciar o serviço
+<br>
+
 Para iniciar:
 nssm start Fail2BanWin
 
 <br>
+
 Para parar:
 nssm stop Fail2BanWin
 
 <br>
+
 Para remover:
 nssm remove Fail2BanWin confirm
 
@@ -700,9 +704,4 @@ nssm remove Fail2BanWin confirm
 - Ele será iniciado automaticamente junto com o sistema.
 
 - Logs e bloqueios continuarão funcionando sem precisar abrir manualmente o PowerShell.
-
-
-
-
-
 
