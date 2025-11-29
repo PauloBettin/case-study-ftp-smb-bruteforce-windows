@@ -208,7 +208,7 @@ with open(arquivo, "w") as f:
                 f.write(p.format(letra + senha + letra) + "\n")
 
 print(f"Lista gerada com sucesso em: {arquivo}")
-```python
+```
 
 <br>
 
