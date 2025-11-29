@@ -513,10 +513,194 @@ O script desenvolvido implementa uma defesa básica contra ataques de brute forc
 <br>
 
 ```powershell
-# Veja o script completo em:
-# [https://github.com/usuario/repositorio/blob/main/Fail2BanWin.ps1](https://github.com/PauloBettin/case-study-ftp-smb-bruteforce-windows/blob/main/Fail2BanWin.ps1)
+# Script Fail2Ban para Windows: FTP + SMB
+# Monitora logs do IIS FTP e eventos de falha de logon (4625)
+# Bloqueia IPs automaticamente via Windows Firewall
+# Inclui registro em arquivo de log
+
+# Caminhos
+$ftpLogPath = "C:\inetpub\logs\LogFiles\FTPSVC2\"
+$scriptLog  = "C:\fail2banWin\fail2banwin_log.txt"
+
+# ConfiguraÃ§Ãµes
+$threshold = 5          # nÃºmero de falhas antes do bloqueio
+$blockTime = 60         # tempo de bloqueio em minutos
+$whitelist = @("127.0.0.1","192.168.15.3")
+
+Write-Host "Monitorando FTP e SMB... Pressione CTRL+C para parar."
+
+# FunÃ§Ã£o para registrar no log
+function Write-Log {
+    param([string]$message)
+    $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+    Add-Content -Path $scriptLog -Value "$timestamp - $message"
+}
+
+# FunÃ§Ã£o para aplicar bloqueio
+function Block-IP {
+    param([string]$ip,[string]$service)
+    $ruleName = "Block_${service}_$ip"
+    if (-not (Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue)) {
+        Write-Host "Bloqueando IP $ip ($service) por $blockTime minutos..."
+        Write-Log "Bloqueio aplicado ao IP $ip ($service) por $blockTime minutos"
+        New-NetFirewallRule -DisplayName $ruleName -Direction Inbound -RemoteAddress $ip -Action Block
+        # Agenda remoÃ§Ã£o da regra
+        Start-Job -ScriptBlock {
+            param($ruleName, $blockTime, $scriptLog)
+            Start-Sleep -Seconds ($blockTime * 60)
+            Remove-NetFirewallRule -DisplayName $ruleName
+            $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+            Add-Content -Path $scriptLog -Value "$timestamp - Bloqueio removido do IP $ruleName"
+        } -ArgumentList $ruleName, $blockTime, $scriptLog | Out-Null
+    }
+}
+
+# Loop infinito
+while ($true) {
+    ### --- FTP ---
+    $latestLog = Get-ChildItem $ftpLogPath -File -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    $ftpCounts = @{}
+    if ($latestLog) {
+        $failedLines = Select-String -Path $latestLog.FullName -Pattern "530" -ErrorAction SilentlyContinue
+        if ($failedLines) {
+            foreach ($line in $failedLines) {
+                $parts = $line.Line.Split(" ")
+                if ($parts.Length -ge 3) {
+                    $ip = $parts[2]
+                    if ($ip -and -not $whitelist.Contains($ip)) {
+                        if ($ftpCounts.ContainsKey($ip)) { $ftpCounts[$ip]++ } else { $ftpCounts[$ip] = 1 }
+                    }
+                }
+            }
+            foreach ($ip in $ftpCounts.Keys) {
+                Write-Host "FTP: IP $ip teve $($ftpCounts[$ip]) falhas"
+                if ($ftpCounts[$ip] -ge $threshold) { Block-IP $ip "FTP" }
+            }
+        } else {
+            Write-Host "Nenhuma falha FTP encontrada no log atual."
+        }
+    } else {
+        Write-Host "Nenhum arquivo de log FTP encontrado em $ftpLogPath"
+    }
+
+    ### --- SMB ---
+    $failedEventsSMB = Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} -ErrorAction SilentlyContinue
+    $smbCounts = @{}
+    if ($failedEventsSMB) {
+        foreach ($event in $failedEventsSMB) {
+            $ip = $event.Properties[19].Value
+            if ($ip -and -not $whitelist.Contains($ip)) {
+                if ($smbCounts.ContainsKey($ip)) { $smbCounts[$ip]++ } else { $smbCounts[$ip] = 1 }
+            }
+        }
+        if ($smbCounts.Count -gt 0) {
+            foreach ($ip in $smbCounts.Keys) {
+                Write-Host "SMB: IP $ip teve $($smbCounts[$ip]) falhas"
+                if ($smbCounts[$ip] -ge $threshold) { Block-IP $ip "SMB" }
+            }
+        } else {
+            Write-Host "Nenhum IP com falhas SMB encontrado."
+        }
+    } else {
+        Write-Host "Nenhum evento SMB (4625) encontrado."
+    }
+
+    # Espera antes de checar novamente
+    Start-Sleep -Seconds 30
+}
+```
 
 <br>
+
+📂 Preparação e instalação do Script / Script preparation and installation
+<br>
+---
+<br>
+
+Crie a pasta onde ficará o script:
+
+<br>
+
+```powershell
+New-Item -ItemType Directory -Path "C:\Fail2BanWin" -Force
+```
+<br>
+
+Salve o script combinado (FTP + SMB) como um arquivo chamado:
+
+<br>
+
+C:\Fail2BanWin\Fail2BanWin.ps1
+
+<br>
+
+Verifique se o arquivo de log configurado no script existe:
+
+<br>
+
+```powershell
+New-Item -ItemType File -Path "C:\Fail2BanWin\fail2banwin_log.txt" -Force
+```
+
+<br>
+
+⚙️ 2. Instalar o NSSM
+
+Baixe o NSSM (Non‑Sucking Service Manager) do site oficial: https://nssm.cc/download.
+
+Extraia o executável nssm.exe em uma pasta acessível, por exemplo: C:\nssm\nssm.exe
+
+<br>
+
+🛠️ 3. Criar o serviço com NSSM
+
+<br>
+
+Abra um Prompt de Comando ou PowerShell como Administrador.
+
+Execute o comando para instalar o serviço:
+
+C:\nssm\nssm.exe install Fail2BanWin
+
+Vai abrir a interface gráfica do NSSM. Configure:
+
+Application Path:
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+<br>
+
+Arguments:
+-ExecutionPolicy Bypass -File "C:\Fail2BanWin\Fail2BanWin.ps1"
+<br>
+
+Startup directory:
+C:\Fail2BanWin
+Clique em Install service.
+
+<br>
+▶️ 4. Iniciar e gerenciar o serviço
+Para iniciar:
+nssm start Fail2BanWin
+
+<br>
+Para parar:
+nssm stop Fail2BanWin
+
+<br>
+Para remover:
+nssm remove Fail2BanWin confirm
+
+<br>
+
+📖 Resultado:
+
+<br>
+
+- O script Fail2BanWin.ps1 ficará rodando em background como um serviço do Windows.
+
+- Ele será iniciado automaticamente junto com o sistema.
+
+- Logs e bloqueios continuarão funcionando sem precisar abrir manualmente o PowerShell.
+
 
 
 
