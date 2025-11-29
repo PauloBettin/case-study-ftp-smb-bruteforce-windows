@@ -71,14 +71,14 @@ Configuração:
 <br>
 
 🔍 Identificando o IP no Kali Linux
-No Kali (ou em qualquer distribuição Linux), usamos o comando:
+No Kali (ou em qualquer distribuição Linux), usamos o comando: ip addr
 
 ![ipaddr](imagens/ipaddr.jpg)
 
 <br>
 
 🌐 Scaneando a rede
-Para identificar os possíveis hosts ativos:
+Para identificar os possíveis hosts ativos com o comando: nmap -sn 192.168.15.0/24
 
 ![nmaparede](imagens/nmaprede.jpg)
 
@@ -124,7 +124,15 @@ nmap -A -p- -T4 192.168.15.3
 
 -Identifica serviços e versões
 
+<br>
+
+![nmaptargetports](imagens/nmaptargetportas.jpg)
+
+<br>
+
 -Descobre o sistema operacional
+
+![nmaptargetos](imagens/nmaptargetos.jpg)
 
 -Executa scripts NSE padrão
 
@@ -132,6 +140,3 @@ nmap -A -p- -T4 192.168.15.3
 
 <br>
 
-![nmaptarget](imagens/nmaptarget.jpg)
-
-<br>
