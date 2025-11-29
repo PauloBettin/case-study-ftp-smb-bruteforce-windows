@@ -52,10 +52,14 @@ Configuração:
 
 ![Configurações](imagens/configuracoesftp.jpg)
 
+<br>
+
 🔹 Máquina Atacante
 -SO: Kali Linux 2025.2
 -Ferramentas: nmap, medusa
 -Rede: mesma sub-rede da VM alvo (rede interna Hyper-V)
+
+<br>
 
 🔹 Máquina Cliente
 -SO: Windows 11 24h2
