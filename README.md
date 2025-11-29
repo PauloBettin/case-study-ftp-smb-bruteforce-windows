@@ -28,10 +28,6 @@ Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; W
 
 <br>
 
----
-
-<br>
-
 🖥️ Ambiente Experimental / Experimental Environment
 <br>
 ---
