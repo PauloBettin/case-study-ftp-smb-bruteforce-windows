@@ -66,24 +66,30 @@ Configuração:
 -Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
 
 <br>
-
-<br>
 ---
+<br>
+
 <br>
 
 <br>
 
 ⚙️ Metodologia / Methodology
 
+<br>
+
 🔍 Identificando o IP no Kali Linux
 No Kali (ou em qualquer distribuição Linux), usamos o comando:
 
 ![ipaddr](imagens/ipaddr.jpg)
 
+<br>
+
 🌐 Scaneando a rede
 Para identificar os possíveis hosts ativos:
 
 ![nmaparede](imagens/nmaprede.jpg)
+
+<br>
 
 📖 Explicação dos parâmetros
 
@@ -95,12 +101,16 @@ nmap → ferramenta de mapeamento de rede
 
 📊 O que o comando faz Percorre todo o segmento de rede e retorna uma lista de hosts online.
 
+<br>
 
 🔍 Escaneando o host alvo
 Após identificar o host 192.168.15.3, realizamos um scan completo:
 
 bash
 nmap -A -p- -T4 192.168.15.3
+
+<br>
+
 📖 Explicação dos parâmetros
 
 -A → modo agressivo (OS detection, versão de serviços, scripts NSE, traceroute)
@@ -111,14 +121,16 @@ nmap -A -p- -T4 192.168.15.3
 
 192.168.15.3 → IP do host alvo
 
+<br>
+
 📊 O que o comando faz
 
-Verifica todas as portas abertas
+-Verifica todas as portas abertas
 
-Identifica serviços e versões
+-Identifica serviços e versões
 
-Descobre o sistema operacional
+-Descobre o sistema operacional
 
-Executa scripts NSE padrão
+-Executa scripts NSE padrão
 
-Faz traceroute até o host
+-Faz traceroute até o host
