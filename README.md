@@ -11,7 +11,7 @@ Este estudo de caso investiga ataques de força bruta direcionados a serviços F
 
 ## Ambiente de Testes
 
-Para simular ataques de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
+Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
 
 - **Servidor alvo (Windows Server 2012 R2 com IIS FTP)**
   - Sistema operacional: Windows Server 2012 R2
@@ -21,15 +21,16 @@ Para simular ataques de brute force em FTP, foram utilizadas máquinas virtuais 
 
   - Usuários configurados para autenticação via Active Directory e inativação da autenticação anônima
 
-![Configurações](imagens/configuracoes.jpg)
+![Configurações](imagens/configuracoesftp.jpg)
 
-  
 
-- **Máquina atacante (Linux Kali/Ubuntu)**
+- **Máquina atacante (Linux Kali)**
   - Sistema operacional: Kali Linux 2025.2
-  - Ferramentas utilizadas: `nmap`, `hydra`, `medusa`
-  - Rede: mesma sub-rede da VM alvo (rede interna VirtualBox/VMware)
+  - Ferramentas utilizadas: `nmap`, `medusa`
+  - Rede: mesma sub-rede da VM alvo (rede interna Microsoft Hyperv)
 
-- **Máquina de monitoramento**
-  - Sistema operacional: Windows 10/11
-  - Função: execução do script PowerShell para análise dos logs e bloqueio automático
+- **Máquina Cliente**
+  - Sistema operacional: Windows 11 24h2
+  - Função: Testes de conexão para serviços FTP, SBM e RDP (após obtenção da senha)
+
+ 
