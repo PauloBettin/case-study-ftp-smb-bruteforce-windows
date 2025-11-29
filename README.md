@@ -34,6 +34,8 @@ Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; W
 
 🖥️ Ambiente Experimental / Experimental Environment
 <br>
+---
+<br>
 
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
 
