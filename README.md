@@ -1,56 +1,52 @@
 📂 Case Study: FTP & SMB Brute Force in Windows
+
 Case study: brute force detection and automated blocking in Windows IIS FTP environments.
 
-Este estudo de caso investiga ataques de força bruta direcionados a serviços FTP hospedados em Windows Server com IIS. A partir da análise dos padrões de falhas de autenticação registrados nos logs do IIS FTP, propomos um mecanismo prático de defesa implementado por meio de scripts em PowerShell e automação do Windows Firewall.
+Este estudo de caso investiga ataques de força bruta direcionados a serviços FTP hospedados em Windows Server com IIS. A partir da análise dos padrões de falhas de autenticação registrados nos logs do IIS FTP, propomos um mecanismo prático de defesa implementado por meio de scripts em PowerShell e automação do Windows Firewall, assim como o hardning nas configurações do ISS.
 
 A solução:
 
-Monitora continuamente os arquivos de log
-
-Identifica tentativas repetidas de login
-
-Aplica bloqueios temporários de IP
-
-Mantém uma whitelist de endereços confiáveis
+- Monitora continuamente os arquivos de log
+- Identifica tentativas repetidas de login
+- Aplica bloqueios temporários de IP
+- Mantém uma whitelist de endereços confiáveis
 
 Os resultados demonstram que, mesmo sem ferramentas nativas como o fail2ban, ambientes Windows podem alcançar uma mitigação eficaz contra brute force através da observabilidade de configurações de segurança (hardening) ou utilização de scripts próprios.
 
 🔑 Keywords / Palavras-chave
+
 Keywords: Information Security; Brute Force Attacks; FTP; IIS; Windows Server; PowerShell; Automation; Firewall; Case Study.
 
 Palavras-chave: Segurança da Informação; Ataques de Força Bruta; FTP; IIS; Windows Server; PowerShell; Automação; Firewall; Estudo de Caso.
+
 
 🖥️ Ambiente Experimental / Experimental Environment
 Para simular o ataque de brute force em FTP, foram utilizadas máquinas virtuais configuradas da seguinte forma:
 
 🔹 Servidor Alvo
-SO: Windows Server 2012 R2
-
-Função instalada: IIS FTP Server
+-SO: Windows Server 2012 R2
+-Função instalada: IIS FTP Server
 
 ![Funções](imagens/servicos.jpg)
 
 Configuração:
 
-Autenticação via Active Directory (verde)
-
-Autenticação anônima desativada (vermelho)
+-Autenticação via Active Directory (verde)
+-Autenticação anônima desativada (vermelho)
 
 ![Configurações](imagens/configuracoesftp.jpg)
 
 🔹 Máquina Atacante
-SO: Kali Linux 2025.2
-
-Ferramentas: nmap, medusa
-
-Rede: mesma sub-rede da VM alvo (rede interna Hyper-V)
+-SO: Kali Linux 2025.2
+-Ferramentas: nmap, medusa
+-Rede: mesma sub-rede da VM alvo (rede interna Hyper-V)
 
 🔹 Máquina Cliente
-SO: Windows 11 24h2
-
-Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
+-SO: Windows 11 24h2
+-Função: Testes de conexão para serviços FTP, SMB e RDP (após obtenção da senha)
 
 ⚙️ Metodologia / Methodology
+
 🔍 Identificando o IP no Kali Linux
 No Kali (ou em qualquer distribuição Linux), usamos o comando:
 
