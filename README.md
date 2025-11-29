@@ -437,6 +437,86 @@ Esse módulo tenta autenticar contra o Server Message Block (SMB), protocolo usa
 
 ## - A visualização das mesmas senhas nos 2x protocolos diferentes evidencia o uso do Active Directory como database para as contas de usários.
 
+<br>
+
+🛡️ Mitigação Simples para os ataques de força bruta / Simple Mitigation for Brute Force Attacks
+<br>
+---
+<br>
+
+O script desenvolvido implementa uma defesa básica contra ataques de brute force direcionados aos serviços FTP e SMB em sistemas Windows. A lógica é inspirada em soluções como Fail2Ban, amplamente utilizadas em ambientes Linux, mas adaptada para o ecossistema Windows utilizando PowerShell e o Windows Firewall.
+
+<br>
+
+🔍 Funcionamento:
+
+<br>
+
+- Monitoramento contínuo
+
+- O script executa em loop infinito, analisando periodicamente:
+
+- Os logs do IIS FTP, identificando falhas de login registradas com o código 530.
+
+- Os eventos de segurança do Windows (ID 4625), que representam tentativas de logon mal-sucedidas, incluindo ataques SMB.
+
+- Identificação de IPs suspeitos
+
+- Cada falha é associada ao endereço IP remoto.
+
+- O script mantém um contador de falhas por IP.
+
+- Quando o número de falhas ultrapassa o limite configurado (threshold), o IP é classificado como potencial atacante.
+
+- Bloqueio automático
+
+- O script cria uma regra no Windows Firewall bloqueando todas as conexões de entrada do IP suspeito.
+
+- O bloqueio é temporário: após o tempo definido (blockTime), a regra é removida automaticamente, permitindo que o endereço volte a se conectar.
+
+- Registro em log
+
+- Todas as ações (bloqueio e desbloqueio) são registradas em arquivo próprio (fail2banwin_log.txt), garantindo rastreabilidade e auditoria.
+
+- Robustez contra ausência de eventos
+
+- Caso não haja logs FTP ou eventos SMB no período analisado, o script não interrompe sua execução. Ele apenas informa que não encontrou registros e continua rodando, aguardando novas tentativas.
+
+<br>
+
+⚙️ Configurações principais
+
+- threshold: número de falhas antes do bloqueio (ex.: 5).
+
+- blockTime: tempo de bloqueio em minutos (ex.: 60).
+
+- whitelist: lista de IPs confiáveis que nunca devem ser bloqueados.
+
+<br>
+
+✅ Benefícios
+
+<br>
+
+- Mitigação imediata: bloqueia automaticamente IPs que insistem em tentativas inválidas.
+
+- Automatização: reduz tempo de resposta sem necessidade de intervenção manual.
+
+- Baixo custo: utiliza apenas recursos nativos do Windows (PowerShell + Firewall).
+
+- Flexibilidade: parâmetros ajustáveis conforme o nível de tolerância desejado.
+
+- Complementaridade: adiciona uma camada extra de proteção, funcionando em conjunto com outras soluções de segurança.
+
+<br>
+##👉 Em resumo, este script representa uma defesa simples, eficaz e de baixo custo contra ataques de força bruta, aproveitando logs e eventos já disponíveis no Windows para identificar tentativas repetidas de login e aplicar bloqueios temporários de forma automática.
+<br>
+
+
+![medusaftp](/Fail2BanWin.ps1)
+
+<br>
+
 
 
 
