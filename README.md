@@ -1,3 +1,15 @@
+## ⚠️ Nota de responsabilidade / ## ⚠️ Disclaimer
+
+Este projeto tem finalidade **exclusivamente acadêmica e educacional**. / This project is intended for **academic and educational purposes only**.  
+O conteúdo aqui apresentado demonstra técnicas de **defesa contra ataques de força bruta** em ambientes Windows.  / The content presented here demonstrates techniques for **defending against brute force attacks** in Windows environments.  
+
+Ferramentas como **Medusa** e **wordlists** são mencionadas apenas para fins de **simulação controlada** em laboratório, com o objetivo de validar mecanismos de mitigação. / Tools such as **Medusa** and **wordlists** are mentioned solely for **controlled simulation** in a lab environment, with the purpose of validating mitigation mechanisms. 
+
+O uso indevido destas informações para atividades ofensivas, ilegais ou não autorizadas é **estritamente proibido**. / Any misuse of this information for offensive, illegal, or unauthorized activities is **strictly prohibited**.   
+O autor não se responsabiliza por qualquer utilização inadequada do material disponibilizado. / The author is not responsible for any improper use of the provided material.
+
+Este projeto deve ser utilizado apenas em ambientes de teste ou com autorização explícita, nunca em sistemas de terceiros sem consentimento. / This project should only be used in test environments or with explicit authorization, never on third‑party systems without consent.
+
 📂 Case Study: FTP & SMB Brute Force in Windows
 <br>
 
