@@ -19,8 +19,11 @@ Para simular ataques de brute force em FTP, foram utilizadas máquinas virtuais 
 
 ![Funções](imagens/servicos.jpg)
 
-  - Diretório de logs: `C:\inetpub\logs\LogFiles\FTPSVC2\`
-  - Usuários configurados para autenticação via Active Directory
+  - Usuários configurados para autenticação via Active Directory e inativação da autenticação anônima
+
+![Configurações](imagens/configuracoes.jpg)
+
+  
 
 - **Máquina atacante (Linux Kali/Ubuntu)**
   - Sistema operacional: Kali Linux 2025.2
