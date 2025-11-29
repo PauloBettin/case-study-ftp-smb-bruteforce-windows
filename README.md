@@ -6,8 +6,6 @@ Case study: brute force detection and automated blocking in Windows IIS FTP envi
 
 <br> 
 
----
-
 <br>
 Este estudo de caso investiga ataques de força bruta direcionados a serviços FTP hospedados em Windows Server com IIS. A partir da análise dos padrões de falhas de autenticação registrados nos logs do IIS FTP, propomos um mecanismo prático de defesa implementado por meio de scripts em PowerShell e automação do Windows Firewall, assim como o hardning nas configurações do ISS.
 
