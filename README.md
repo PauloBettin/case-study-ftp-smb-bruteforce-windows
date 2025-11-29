@@ -135,9 +135,100 @@ Após identificar o host 192.168.15.3, realizamos um scan completo com o comando
 
 ![nmaptargetos](imagens/nmaptargetos.jpg)
 
--Executa scripts NSE padrão
+<br>
 
--Faz traceroute até o host
+🔑 Criação da Password List / Password List Creation
+<br>
+---
+<br>
+
+Para simular ataques de força bruta contra o serviço FTP, foi criada uma lista de senhas personalizada utilizando Python. O script foi executado no Google Colab, permitindo edição e execução rápida em ambiente online.
 
 <br>
+
+📜 Script em Python
+
+<br>
+
+# Script para gerar lista de senhas
+
+# Nome do arquivo de saída
+arquivo = "password_list.txt"
+
+# Padrões de símbolos
+padroes = [
+    "{}*",
+    "{}@",
+    "@{}@",
+    "*{}*",
+    "*{}@",
+    "@{}*"
+]
+
+# Sufixos comuns (anos)
+letras = ["2010", "2011", "2012", "2013", "2014", "2015",
+          "2016", "2017", "2018", "2019", "2020", "2021",
+          "2022", "2023", "2024", "2025"]
+
+# Senhas padrão conhecidas
+senhas_padrao = [
+    "admin", "Admin", "password", "Password", "root", "htmaster", "Htmaster",
+    "123", "1234", "12345", "123456", "1234567", "12345678", "123456789",
+    "100senha", "100senh@", 
+    "Mudar123", "Mudar1234", "Mudar12345","Mudar123456",
+    "mudar123", "mudar12345", "mudar123456", 
+    "a1b1c1d1", "a1b2c3d4"
+]
+
+# Criar lista e salvar no arquivo
+with open(arquivo, "w") as f:
+    # 1. Senhas padrão puras
+    for senha in senhas_padrao:
+        f.write(senha + "\n")
+    
+    # 2. Senhas padrão com máscaras
+    for senha in senhas_padrao:
+        for p in padroes:
+            f.write(p.format(senha) + "\n")
+    
+    # 3. Senhas padrão com anos adicionados
+    for senha in senhas_padrao:
+        for letra in letras:
+            f.write(senha + letra + "\n")
+            f.write(letra + senha + "\n")
+            f.write(letra + senha + letra + "\n")
+    
+    # 4. Senhas padrão + anos + máscaras
+    for senha in senhas_padrao:
+        for letra in letras:
+            for p in padroes:
+                f.write(p.format(senha + letra) + "\n")
+                f.write(p.format(letra + senha) + "\n")
+                f.write(p.format(letra + senha + letra) + "\n")
+
+print(f"Lista gerada com sucesso em: {arquivo}")
+
+<br>
+
+📖 Explicação:
+
+<br>
+
+- senhas_padrao → contém senhas comuns (admin, root, 123456, mudar123 etc.).
+
+- letras → adiciona anos como sufixos/prefixos (2010–2025), simulando padrões reais de usuários.
+
+- padroes → aplica símbolos como *, @ em diferentes posições, aumentando a complexidade.
+
+- Loops → combinam senhas padrão com anos e símbolos, gerando centenas de variações automaticamente.
+
+- Saída → todas as combinações são salvas em password_list.txt.
+
+<br>
+
+📊 Resultado:
+
+<br>
+
+O arquivo final password_list.txt contém uma lista extensa de senhas que imita padrões reais de usuários.
 
